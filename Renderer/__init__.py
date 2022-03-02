@@ -45,11 +45,11 @@ class Renderer:
                 6, 6, f"{self.game.TICK_TIME}s", self.COLOR_INVERTED)
             for y in range(self.MAX_Y-1):
                 self.terminal.addch(y, 19, "╏", self.COLOR_INVERTED)
+            self.terminal.refresh()
         for i, row in enumerate(self.game.cells):
             for j, cell in enumerate(row):
                 tile_char = "X" if self.game.game_mode == 0 and self.game.cursor == (
                     i, j) else " "
                 color = self.COLOR_LIVE if cell.status else self.COLOR_DEAD
                 self.game_pad.addch(i, j, tile_char, color)
-        self.terminal.refresh()
         self.game_pad.refresh(0, 0, 0, 20, self.MAX_Y - 1, self.MAX_X - 1)

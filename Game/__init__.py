@@ -12,7 +12,7 @@ class Game:
     SIZE_Y = 20
     SIZE_X = 20
     TORUS = False
-    TICK_TIME = 0
+    TICK_TIME = .25
 
     rule_parser = DefaultRuleParser
 
@@ -104,7 +104,6 @@ class Game:
         y, x = cell.coords
         grid[y][x] = self.live_rule(
             live_neighbors) if status else self.grow_rule(live_neighbors)
-        return True
 
     @staticmethod
     def min_timer(time):
